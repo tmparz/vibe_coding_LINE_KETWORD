@@ -1,18 +1,19 @@
 {
   "name": "vibe-coding-line-keyword-course",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
-  "description": "Two-day LINE OA + Gemini FAQ + Cloudflare Worker/D1 course MVP",
+  "description": "DAY1: static FAQ + Gemini; DAY2: independent D1 booking demo",
   "scripts": {
     "dev": "wrangler dev",
     "deploy": "wrangler deploy",
+    "dev:day2": "wrangler dev --config wrangler.day2.jsonc",
+    "deploy:day2": "wrangler deploy --config wrangler.day2.jsonc",
     "test": "node --test",
-    "db:local": "wrangler d1 migrations apply DB --local",
-    "db:remote": "wrangler d1 migrations apply DB --remote",
-    "seed:local": "wrangler d1 execute DB --local --file=seeds/demo.sql"
+    "db:local": "wrangler d1 migrations apply DB --local --config wrangler.day2.jsonc",
+    "db:remote": "wrangler d1 migrations apply DB --remote --config wrangler.day2.jsonc",
+    "seed:local": "wrangler d1 execute DB --local --config wrangler.day2.jsonc --file=seeds/demo.sql",
+    "seed:remote": "wrangler d1 execute DB --remote --config wrangler.day2.jsonc --file=seeds/demo.sql"
   },
-  "devDependencies": {
-    "wrangler": "^4.0.0"
-  }
+  "devDependencies": { "wrangler": "^4.0.0" }
 }

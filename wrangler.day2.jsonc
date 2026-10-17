@@ -1,0 +1,13 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "line-ai-faq-course",
+  "main": "src/index.js",
+  "compatibility_date": "2026-10-01",
+  "observability": { "enabled": true },
+  "vars": { "GEMINI_MODEL": "gemini-2.5-flash", "BOOKING_ENABLED": "true" },
+  "d1_databases": [{
+    "binding": "DB",
+    "database_name": "line-course-bookings",
+    "database_id": "00000000-0000-0000-0000-000000000000"
+  }]
+}
