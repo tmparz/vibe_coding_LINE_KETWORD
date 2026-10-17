@@ -1,25 +1,18 @@
-# 官方參考、版本限制與待驗證項目
+# 官方參考、限制與課前複核
 
-## 官方文件（2026-10-17 查證）
-- LINE Messaging API 開始使用：https://developers.line.biz/en/docs/messaging-api/getting-started/
-- LINE Webhook 簽章：https://developers.line.biz/en/docs/messaging-api/verify-webhook-signature/
-- LINE Webhook 接收：https://developers.line.biz/en/docs/messaging-api/receiving-messages/
-- LINE 回覆訊息：https://developers.line.biz/en/docs/messaging-api/sending-messages/
-- Cloudflare D1 起步：https://developers.cloudflare.com/d1/get-started/
-- Cloudflare D1 migrations：https://developers.cloudflare.com/d1/reference/migrations/
-- Cloudflare R2 Workers API：https://developers.cloudflare.com/r2/get-started/workers-api/
+- LINE Messaging API：https://developers.line.biz/en/docs/messaging-api/getting-started/
+- LINE Webhook 驗證：https://developers.line.biz/en/docs/messaging-api/verify-webhook-signature/
+- Cloudflare Workers：https://developers.cloudflare.com/workers/
+- Cloudflare D1（第二天預約資料專用）：https://developers.cloudflare.com/d1/get-started/
+- Cloudflare R2（非必修）：https://developers.cloudflare.com/r2/get-started/workers-api/
 - Gemini API：https://ai.google.dev/gemini-api/docs/
-- 原 6 小時 Vibe Coding 教材：https://github.com/tmparz/vibe-coding-course-guide
+- 原 Vibe Coding 六小時參考：https://github.com/tmparz/vibe-coding-course-guide
 
-## 請講師課前複核
-1. LINE OA Manager 當日介面位置；Messaging API 必須先在 OA Manager 啟用。
-2. Cloudflare D1/R2 免費用量與信用卡要求（不同帳號情況、方案可能不同），不可宣稱「永遠免費」。
-3. Google AI Studio API Key 開通、可用 Gemini model ID、配額、資料使用條款及成本；本 Repo GEMINI_MODEL 預設 gemini-2.5-flash，若當日 API 不支援需改為可用模型。
-4. LINE 免費訊息數、管理員主動推播限制與 OA 訊息方案；請依官方最新公告。
-5. 接觸真實消費者資料前，補足隱私告知、留存期間、授權、備份與管理權限。
+## 請在課前重新核對
+LINE OA 與 Developers 當日操作介面；Gemini 模型可用性、費率與配額；Cloudflare Workers/D1/R2 當期方案及 R2 是否須付款資訊；LINE OA 訊息額度及推播限制。
 
-## 教學 M​VP 的限制
-- FAQ 採最多 30 筆上下文模式；不是向量化 RAG。
-- 只支援文字訊息，缺少多媒體、排班引擎、付款與會員。
-- 後台使用單一管理金鑰，適合課堂與小型封閉 Demo；正式上線須加身分驗證、操作紀錄、權限控管與防暴力破解。
-- Webhook 採已驗簽後非同步回應；未配置重試佇列與完整可觀測性，不能宣稱企業級可靠度。
+## 範例限制
+- FAQ 小資料量採完整上下文送 Gemini，**無搜尋、無 D1、無向量庫**，每次問答重送整包 FAQ 都會產生 token 成本。
+- Day 2 為名額型時段預約 Demo；不含日期合法性業務驗證、取消釋出名額、付款、改期、排班引擎或自動確認。
+- 課堂後台使用單一 ADMIN_TOKEN；正式營運須做使用者身分驗證、角色權限、存取記錄及個資/第三方服務評估。
+- Webhook 採非同步回覆，尚無持久化佇列與發送成功追蹤，不宜作商用送達保證。
