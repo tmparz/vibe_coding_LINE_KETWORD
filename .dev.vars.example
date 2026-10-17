@@ -1,0 +1,7 @@
+# 複製為 .dev.vars；絕對不可提交真實秘密
+LINE_CHANNEL_SECRET=put-your-own-secret-here
+LINE_CHANNEL_ACCESS_TOKEN=put-your-own-token-here
+GEMINI_API_KEY=put-your-own-api-key-here
+ADMIN_TOKEN=replace-with-long-random-secret
+# 可選：若不想在本機推播管理員，留空或不設定
+LINE_ADMIN_USER_ID=

@@ -1,0 +1,18 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "line-ai-faq-course",
+  "main": "src/index.js",
+  "compatibility_date": "2026-10-01",
+  "observability": { "enabled": true },
+  "vars": { "GEMINI_MODEL": "gemini-2.5-flash", "FAQ_SOURCE": "d1" },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "line-course-db",
+      // 更換為 npx wrangler d1 create line-course-db 的 database_id
+      "database_id": "00000000-0000-0000-0000-000000000000"
+    }
+  ]
+  // R2 選修：先建立 bucket，再加以下欄位、同時將 FAQ_SOURCE 改 r2
+  // ,"r2_buckets": [{"binding":"FAQ_BUCKET","bucket_name":"line-course-faq"}]
+}
