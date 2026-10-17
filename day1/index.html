@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="description" content="女力 LINE OA × AI 工作流進階班｜DAY 1 六小時互動式學員操作網頁：LINE 後台、網路基礎、Gemini FAQ、Cloudflare Worker">
+<title>DAY 1｜LINE 官方帳號與 Gemini AI 客服｜女力實作學習引導</title>
+<style>
+:root{--ink:#352e36;--muted:#6d6871;--wine:#86546c;--deep:#5e3b50;--rose:#f5e4e7;--cream:#faf7f2;--white:#fff;--sage:#527c6d;--mint:#ebf3ed;--border:#e9dcdf;--warn:#905f30;--warnbg:#fff4df;--shadow:0 10px 35px rgba(71,40,60,.06)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font-family:system-ui,-apple-system,"Microsoft JhengHei","Noto Sans TC",sans-serif;font-size:16px;line-height:1.75}
+a{color:var(--deep);text-underline-offset:3px}button,input,textarea{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #b68fa4;outline-offset:2px}
+.skip{position:absolute;left:-9999px;top:0}.skip:focus{left:15px;top:10px;background:white;padding:8px;z-index:300}
+header{position:sticky;top:0;z-index:20;background:#fffdfaed;backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.top{max-width:1240px;margin:auto;min-height:66px;padding:11px 24px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{font-size:16px;font-weight:800;color:var(--deep);text-decoration:none;white-space:nowrap}.brand small{font-size:12px;font-weight:500;color:var(--muted);padding-left:8px}
+.topright{display:flex;gap:10px;align-items:center}.pill{background:#f6edef;border-radius:30px;padding:4px 11px;color:var(--wine);font-size:12px;font-weight:750}
+.btn{border:1px solid var(--border);background:#fff;border-radius:10px;padding:9px 15px;color:var(--deep);font-weight:700}.btn:hover{background:var(--rose)}.btn.primary{background:var(--wine);color:white;border-color:var(--wine)}.btn.primary:hover{background:var(--deep)}
+.hero{background:radial-gradient(ellipse at 8% 16%,#f3dfe2,transparent 52%),radial-gradient(ellipse at 91% 35%,#e7eee8,transparent 48%),linear-gradient(140deg,#fdfaf6,#fbf1ee);border-bottom:1px solid var(--border);padding:43px 24px 36px}
+.hero-inner{max-width:1180px;margin:auto;display:grid;grid-template-columns:1.5fr .85fr;gap:35px;align-items:center}
+.eyebrow{text-transform:uppercase;letter-spacing:.12em;font-size:12px;font-weight:800;color:var(--wine)}
+h1{font-size:clamp(32px,4.3vw,54px);color:var(--deep);margin:13px 0 16px;line-height:1.22;letter-spacing:-.03em}
+.hero p{max-width:720px;color:#5e5860;font-size:18px;margin:0}.badges{display:flex;flex-wrap:wrap;gap:9px;margin-top:21px}.badges span{border:1px solid #e7cfd7;background:#ffffff9c;color:var(--deep);padding:5px 11px;border-radius:40px;font-size:12px;font-weight:750}
+.hero-card{background:#fffdf9e8;border:1px solid #e6d2d9;border-radius:20px;padding:22px;box-shadow:var(--shadow)}.hero-card b{display:block;font-size:14px;color:var(--wine);margin-bottom:7px}
+.hero-card strong{font-size:25px;color:var(--deep)}.hero-card p{font-size:13px;line-height:1.8;margin-top:8px}
+.meter{height:9px;border-radius:20px;background:#ebdee1;overflow:hidden;margin-top:15px}.meter>div{width:0;height:100%;background:linear-gradient(90deg,var(--wine),var(--sage));transition:width .25s}.num{font-size:12px;color:var(--muted);margin-top:7px}
+.layout{max-width:1230px;padding:26px 22px 92px;margin:auto;display:grid;grid-template-columns:260px minmax(0,1fr);gap:25px}
+.sidebar{position:sticky;align-self:start;top:90px;background:white;border:1px solid var(--border);padding:13px;border-radius:16px;box-shadow:var(--shadow)}
+.sidehead{font-size:12px;letter-spacing:.08em;color:var(--muted);padding:9px 10px;font-weight:800}
+.stagebtn{width:100%;border:0;background:transparent;color:#5d5760;text-align:left;border-radius:10px;padding:10px 11px;display:flex;gap:10px;align-items:center;line-height:1.35;font-size:13px}
+.stagebtn:hover{background:#faf2f3}.stagebtn[aria-current="step"]{background:var(--rose);color:var(--deep);font-weight:800}
+.stagebtn .n{flex:0 0 27px;height:27px;line-height:27px;border-radius:9px;text-align:center;background:#f1e7e8;font-size:12px;font-weight:800}
+.stagebtn[aria-current="step"] .n{background:var(--wine);color:white}.time{margin-left:auto;font-size:11px;color:#807680;white-space:nowrap}.mini-links{border-top:1px solid var(--border);margin:12px 5px 0;padding:12px 7px 4px;display:grid;gap:8px;font-size:12px}
+.main{min-width:0}.section-title{margin:6px 0 15px}.kicker{font-weight:750;font-size:12px;letter-spacing:.09em;color:var(--sage)}
+h2{color:var(--deep);font-size:clamp(24px,3vw,32px);line-height:1.28;margin:9px 0}h3{color:var(--deep);font-size:18px;margin:0 0 11px}
+.lead{color:var(--muted);margin-top:6px;font-size:15px}.stage-status{display:flex;flex-wrap:wrap;gap:9px;margin:18px 0}.stage-status span{border:1px solid var(--border);border-radius:30px;padding:5px 12px;font-size:12px;background:white}
+.card{background:white;border:1px solid var(--border);box-shadow:var(--shadow);border-radius:16px;padding:23px 25px;margin:14px 0}
+.card p{margin:7px 0 11px}.card ul,.card ol{padding-left:23px;margin:6px 0}.card li{padding:3px 0}
+.instruction{background:#fcf8f7;border-radius:12px;padding:14px 16px;margin-top:10px;border:1px solid #efe4e5}.instruction b{color:var(--wine)}
+.note{background:var(--mint);border-left:4px solid var(--sage);padding:14px 17px;border-radius:0 10px 10px 0;font-size:14px;margin:14px 0;color:#3d6053}.warn{background:var(--warnbg);border-left:4px solid #cf9d58;color:#754d29;padding:14px 17px;border-radius:0 10px 10px 0;margin:14px 0;font-size:14px}
+.task{display:flex;align-items:flex-start;gap:11px;cursor:pointer;margin:9px 0;padding:10px;border:1px solid #f1e8e9;border-radius:11px;background:#fffdfc}
+.task input{width:19px;height:19px;accent-color:var(--sage);margin-top:5px;flex-shrink:0}.task.done{background:#f3f9f5;text-decoration-color:#9dbfae}.task.done span{text-decoration:line-through;color:#648373}.task span{font-size:14px}
+.subbox{background:#fdfaf7;border:1px dashed #dfc9d1;padding:18px;border-radius:12px;margin:13px 0}
+.columns{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0}.choice{border:1px solid var(--border);background:#fcfbfa;padding:17px;border-radius:13px}.choice strong{display:block;color:var(--deep);font-size:16px}.choice .price{font-size:12px;color:var(--sage);font-weight:700}.choice p{font-size:13px;color:var(--muted);line-height:1.7}
+.diagram{background:#fcf9f8;border:1px solid var(--border);padding:20px;border-radius:14px;margin:15px 0;display:flex;align-items:center;flex-wrap:wrap;gap:9px}.node{background:white;border:1px solid #dfced3;border-radius:10px;padding:9px 13px;font-size:13px;text-align:center;min-width:105px;flex:1}.node b{display:block;color:var(--wine)}.arrow{color:var(--sage);font-size:18px;font-weight:850}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:13px 0}td,th{padding:11px;text-align:left;border:1px solid var(--border);vertical-align:top}th{background:#f5edef;color:var(--deep)}
+.stepimage{max-width:100%;height:auto;display:block;border:1px solid var(--border);border-radius:11px;margin:12px auto}
+.imgcap{font-size:12px;color:var(--muted);text-align:center}
+.glossary{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.term{background:#fbf8f8;border:1px solid var(--border);border-radius:10px;padding:10px 12px;font-size:13px}.term b{display:block;color:var(--deep);font-size:14px}
+input[type=text],textarea{width:100%;padding:11px 12px;border:1px solid #d8c7ce;background:#fff;border-radius:9px;color:var(--ink)}
+textarea{min-height:130px;resize:vertical;font-family:inherit}label.field{display:block;font-size:12px;color:var(--muted);font-weight:700;margin:7px 0}
+.faq-row{display:grid;grid-template-columns:1fr 1.4fr auto;gap:9px;align-items:end;background:#fbf9f7;border:1px solid var(--border);padding:11px;border-radius:11px;margin:10px 0}
+.faq-row .smallbutton{margin-bottom:1px}.smallbutton{border:1px solid #e2d3d9;background:white;border-radius:9px;padding:10px 12px;color:var(--wine)}
+pre{font-size:12px;line-height:1.65;background:#292831;color:#f7f5ec;padding:18px;border-radius:12px;white-space:pre-wrap;overflow-wrap:anywhere;overflow-x:auto}
+.codebox{min-height:155px;font:12px/1.55 ui-monospace,SFMono-Regular,Consolas,monospace;background:#2f2c35;color:#fafaf6;border:0}
+.actions{display:flex;flex-wrap:wrap;gap:9px;margin:13px 0}.toast{min-height:21px;color:var(--sage);font-size:13px;font-weight:700}
+.compare-demo{display:flex;gap:12px;flex-wrap:wrap;align-items:center}.compare-demo input{max-width:350px;flex:1}.reply{min-height:60px;background:#edf5ee;padding:13px;border-radius:10px;margin-top:9px;font-size:14px}.sources a{display:inline-block;margin:5px 10px 5px 0;font-size:13px}
+.next{display:flex;justify-content:space-between;gap:14px;align-items:center;border-top:1px solid var(--border);padding-top:19px;margin-top:25px}
+footer{font-size:12px;color:var(--muted);padding:25px 24px;border-top:1px solid var(--border);max-width:1240px;margin:auto}
+.hidden{display:none!important}
+@media(max-width:900px){.hero-inner{grid-template-columns:1fr}.layout{display:block}.sidebar{position:static;margin-bottom:21px}.navwrap{display:flex;overflow-x:auto;gap:7px}.stagebtn{min-width:150px}.sidehead{display:none}.mini-links{display:none}.hero-card{max-width:400px}}
+@media(max-width:670px){.top{padding:10px 14px}.brand small{display:none}.topright .pill{display:none}.hero{padding:28px 17px}.hero p{font-size:15px}.layout{padding:17px 13px 70px}.card{padding:19px 15px}.columns,.glossary{grid-template-columns:1fr}.faq-row{grid-template-columns:1fr}.faq-row .smallbutton{justify-self:end}.node{min-width:100px}.arrow{font-size:14px}.stage-status{gap:5px}}
+@media print{header,.sidebar,.next,.btn,.actions,.topright{display:none!important}.layout{display:block;padding:0}.stage{display:block!important;page-break-before:always}.card{box-shadow:none}.hero{padding:10px}}
+</style>
+</head>
+<body>
+<a href="#content" class="skip">跳到課程內容</a>
+<header><div class="top">
+<a class="brand" href="../site/index.html">女力 × LINE AI <small>DAY 1 學員互動學習手冊</small></a>
+<div class="topright"><span class="pill">6 小時｜8 個單元｜免 D1、免 R2</span><button class="btn" type="button" onclick="window.print()">列印講義</button><a class="btn primary" href="../site/index.html">兩日總覽</a></div>
+</div></header>
+<section class="hero"><div class="hero-inner">
+<div><span class="eyebrow">WOMEN'S DIGITAL WORKFORCE · HANDS-ON DAY 01</span>
+<h1>讓 LINE 聽懂顧客的問題，<br>也讓妳看懂它怎麼運作。</h1>
+<p>先學會操作 LINE 官方帳號，親自比較免費自動回應與 AI 客服，再一步步用 Cloudflare Worker ＋ Gemini 做出自己的自然語言 FAQ。這一天不必先學資料庫。</p>
+<div class="badges"><span>LINE OA 後台</span><span>關鍵字 vs. 自然語言</span><span>網路與 API 基礎</span><span>Gemini FAQ 實作</span><span>手機驗收</span></div></div>
+<div class="hero-card"><b>今日作品</b><strong>自己的 LINE AI 客服</strong><p>顧客傳訊息 → Worker 取出完整 FAQ → 將問題與 FAQ 交給 Gemini → LINE 回覆。明天才增加 D1 預約。</p>
+<div class="meter" aria-label="完成進度"><div id="progressBar"></div></div><div id="progressText" class="num">進度 0 / 0</div>
+<button class="btn primary" id="continue" style="margin-top:12px;width:100%">從第一個單元開始</button></div>
+</div></section>
+<div class="layout">
+<aside class="sidebar" aria-label="課程單元導覽"><div class="sidehead">六小時課程導覽</div><div class="navwrap" id="nav"></div>
+<div class="mini-links"><a href="https://github.com/tmparz/vibe-coding-course-guide" target="_blank" rel="noopener">原第二天 Vibe Coding 教材 ↗</a>
+<a href="../docs/10-deployment-lab.md" target="_blank" rel="noopener">部署指令說明 ↗</a>
+<a href="../src/faq-data.js" target="_blank" rel="noopener">第一天 FAQ 範例原始碼 ↗</a></div></aside>
+<main id="content" class="main"><div id="stageContent"></div></main>
+</div>
+<footer>女力 LINE OA × AI 工作流進階班｜DAY 1 教學版 · 進度、FAQ 練習暫存在本機瀏覽器（localStorage），不傳到伺服器。請勿輸入金鑰、顧客個資或敏感資料。官方產品功能與費率會變動，授課前請再次核對官方公告。</footer>
+<script>
+"use strict";
+const STAGES=[
+{id:"ai",time:"00:00–00:25",minutes:25,nav:"AI 入門",title:"CH 0｜先知道今天要做出什麼",lead:"少量 AI 基礎，從工作上常遇到的問題出發。",steps:[
+["我把一個常遇到的客服問題寫成一句話","例如：客人總問『假日能預約嗎？』；今天要讓 LINE 幫忙先回答。"],
+["我能區分 AI 的工作與人的責任","AI 可以整理、理解問法；價格、可預約時段、承諾與例外事項仍由商家確認。"]
+],body:'<div class="card"><h3>老師開場示範</h3><p>「今天先把顧客常問的問題整理成可信的答案，再讓 LINE 用自然語言回答。明天才做有狀態的預約資料。」</p><div class="note">本日成果範圍：常見問題問答、未知問題轉真人。沒有實際預約、付款、排班。</div></div><div class="card"><h3>簡單的 AI 協作心法</h3><ol><li>描述問題：顧客常問什麼？</li><li>提供真實資料：答案由誰確認？</li><li>定義限制：不知道就不要亂答。</li><li>設計驗收：換三種問法、用一個未知問題測試。</li></ol></div>'},
+{id:"oa",time:"00:25–01:40",minutes:75,nav:"LINE OA 後台",title:"CH 1｜先會用 LINE 官方帳號本來就有的功能",lead:"從不寫程式的功能開始操作，讓學員看見什麼已經能直接做到。",steps:[
+["能登入自己的 LINE Official Account Manager","找到帳號首頁、聊天、回應設定和自動回應入口。"],
+["完成一則歡迎訊息","用自己的服務名稱撰寫，並由測試帳號檢查。"],
+["設定一筆關鍵字回應","關鍵字例如「營業時間」，回覆內容依自己的已確認資料。"],
+["能找到圖文選單與真人聊天入口","認識選單、手動接手、回覆模式可能造成的重複回覆。"]
+],body:'<div class="card"><h3>操作順序（每完成一項再往下）</h3><ol><li>開啟 <a href="https://manager.line.biz/" target="_blank" rel="noopener">LINE Official Account Manager</a>，選擇上課專用的官方帳號。</li><li>找聊天設定、歡迎訊息、回應設定，理解自動回覆與真人接手。</li><li>建立「營業時間」關鍵字回覆，讓手機測試帳號實際傳送「營業時間」。</li><li>認識圖文選單：今日只看入口，明天才延伸為預約功能。</li></ol><div class="warn">用測試 OA 練習，避免修改仍在服務客人的正式帳號。LINE「輕用量」為月費 0 元，2026/11/1 起公告仍維持每月 200 則免費計費訊息；但不同類型訊息的計費規則不同，並非一切訊息都占 200 則。</div></div><div class="card"><h3>畫面對照｜原始教材的 LINE 後台截圖</h3><img class="stepimage" loading="lazy" alt="LINE OA 設定入口標示截圖" src="https://raw.githubusercontent.com/tmparz/vibe-coding-course-guide/main/line-flow-screenshots/05-official-account-dashboard-marked.png"><p class="imgcap">沿用原講師教材的操作圖。LINE 後台介面更新時，依實際顯示為準。</p><div class="sources"><a href="https://tw.linebiz.com/manual/line-official-account/oa-manager-autoreply/" target="_blank" rel="noopener">官方：自動回應操作</a><a href="https://tw.linebiz.com/manual/line-official-account/oa-function-intro/" target="_blank" rel="noopener">官方：功能導覽</a></div></div>'},
+{id:"compare",time:"01:40–02:05",minutes:25,nav:"官方 vs 自建",title:"CH 2｜免費自動回覆、LINE AI 與自建 Gemini 有何不同？",lead:"先誠實比較現成服務，讓學員知道什麼時候值得自己做。",steps:[
+["我試過相同意思的不同問法","先傳「營業時間」，再試「請問晚上開到幾點？」；記錄內建關鍵字回應的結果。"],
+["我知道三種方案各自適合什麼需求","不把 LINE 付費 AI 誤說成完全做不到自然語言，也不宣稱自建系統一定免費。"]
+],body:'<div class="card"><h3>三種選擇</h3><div class="columns"><div class="choice"><strong>LINE 免費內建</strong><span class="price">官方帳號輕用量：月費 0 元</span><p>歡迎訊息、關鍵字／預設自動回覆、圖文選單、真人聊天等基礎功能。適合固定話術與簡單營運。</p></div><div class="choice"><strong>LINE AI 聊天機器人（β）</strong><span class="price">聊天進階方案：NT$100／月（未稅）</span><p>能依 FAQ 辨識自然語言，也可輔助建立 FAQ；目前有 100 筆問答上限、回覆量及適用行業限制。簡單 FAQ 可優先評估現成方案。</p></div><div class="choice"><strong>自己的 Worker＋Gemini</strong><span class="price">有免費額度，但使用量與維護有成本</span><p>可以控制提示詞、資料與回覆規則，也能接明天的預約功能。需自行處理部署、測試、金鑰與安全。</p></div></div><p><strong>老師口說重點：</strong>如果只需要簡單 FAQ，花 100 元使用現成方案可能更省事；今天學自己的方案，是為了掌握客製化與日後整合能力。</p><div class="warn">LINE AI（β）可能限制醫療、社福照護、金融等敏感領域帳號使用；不是每個商家都能啟用。勿保證一定可用。</div><div class="sources"><a href="https://tw.linebiz.com/column/oa-aichatbot/" target="_blank" rel="noopener">LINE 官方：AI 聊天機器人與費用</a><a href="https://tw.linebiz.com/faq/oa-ai-chatbot/oa-ai-chatbot-creation-limit/" target="_blank" rel="noopener">LINE 官方：FAQ 筆數</a><a href="https://tw.linebiz.com/column/LINEOA-2026-Price-Plan/" target="_blank" rel="noopener">LINE 官方：2026 方案調整</a></div></div><div class="card"><h3>現場互動｜關鍵字示意測試</h3><p>輸入不同問法，比較「只有一組完全相同關鍵字」的簡化模擬。<strong>這不是即時 LINE 或 Gemini 串接</strong>；真正的行為請到自己的 OA 實測。</p><div class="compare-demo"><input id="demoInput" type="text" value="營業時間" aria-label="模擬顧客的問題"><button class="btn" id="demoRun" type="button">模擬固定文字比對</button></div><div class="reply" id="demoReply" aria-live="polite"></div><p class="note">示意規則只設定「營業時間」完全相同時回覆。實際 LINE 關鍵字回應有其比對規則，請以官方後台實測為準。</p></div>'},
+{id:"web",time:"02:05–02:50",minutes:45,nav:"網路基礎",title:"CH 3｜懂這些名詞，才知道 LINE 訊息怎麼走",lead:"把原本第二天開頭的必要網路知識移到今天，讓後面的 API 串接不再像魔法。",steps:[
+["我能解釋 URL、HTTPS、API、Webhook 的用途","至少用自己的話描述 Webhook 是「LINE 主動把事件通知我們的程式」。"],
+["我能用圖說明一則訊息的來回","顧客 → LINE → Webhook → Worker → Gemini → LINE Reply。"]
+],body:'<div class="card"><h3>先看整個資料流</h3><div class="diagram" aria-label="LINE FAQ 資料流"><div class="node"><b>顧客</b>LINE 發問</div><span class="arrow">→</span><div class="node"><b>LINE 平台</b>Webhook 事件</div><span class="arrow">→</span><div class="node"><b>Cloudflare Worker</b>整理問題＋完整 FAQ</div><span class="arrow">→</span><div class="node"><b>Gemini API</b>理解並作答</div><span class="arrow">→</span><div class="node"><b>LINE Reply</b>回到手機</div></div><div class="note">第一天只需要 Worker 和一份 FAQ 靜態檔，不需要 D1；明天需要記錄預約狀態時才介紹資料庫。</div></div><div class="card"><h3>白話名詞對照表</h3><div class="glossary"><div class="term"><b>網址 URL</b>找到網路上某個服務的地址。</div><div class="term"><b>HTTPS</b>在網路上加密傳送資料。</div><div class="term"><b>前端 / 後端</b>前端是使用者看到的；後端負責處理請求與邏輯。</div><div class="term"><b>API</b>不同系統彼此請求服務的介面。</div><div class="term"><b>Webhook</b>事件發生時，平台主動通知指定的網址。</div><div class="term"><b>JSON</b>常見的結構化資料格式，像 {question, answer}。</div><div class="term"><b>Request / Response</b>一次請求與一次回覆。</div><div class="term"><b>Deploy 部署</b>把程式發布到雲端讓外部存取。</div><div class="term"><b>Secret / Token</b>身分憑證，只能安全存放在後端。</div><div class="term"><b>D1</b>明天才用來保存時段、名額與預約紀錄。</div></div><div class="instruction"><b>請學員口頭完成：</b>「我在 LINE 打字後，LINE 會透過 ______ 找到 Worker，Worker 再透過 ______ 問 Gemini。」（答案：Webhook、API）</div></div>'},
+{id:"env",time:"02:50–03:40",minutes:50,nav:"API 與環境",title:"CH 4｜開通 Messaging API，認識 Cloudflare Worker",lead:"沿用前一堂課的 LINE 三把鑰匙教材，但第一天只開通必要功能。",steps:[
+["已在 LINE OA Manager 啟用 Messaging API","再到 Developers Console 檢查對應 Channel；不使用舊版「從 Developers 直接新增 Messaging API Channel」教法。"],
+["找到 Channel Secret 與 Channel Access Token 的設定位置","知道哪個用來驗證來源、哪個用來代表官方帳號回覆訊息。"],
+["Cloudflare 帳號可以登入","理解 Worker 是雲端小程式，今天不需要建立 D1 / R2。"],
+["已備妥自己的測試專案與工具","可使用 VS Code、Node.js、Wrangler，依照部署指南操作。"]
+],body:'<div class="card"><h3>LINE 三把鑰匙（第三把在本日只理解用途）</h3><img class="stepimage" loading="lazy" alt="原課程 LINE 三把鑰匙教學示意圖" src="https://raw.githubusercontent.com/tmparz/vibe-coding-course-guide/main/01_LINE%E4%B8%89%E6%8A%8A%E9%91%B0%E5%8C%99.png"><p class="imgcap">來源：阿茲老師原 Vibe Coding 課程。Channel Secret 和 Access Token 均須保密；管理員 UID 在第二天通知功能才會用到。</p><ol><li>從 <a href="https://manager.line.biz/" target="_blank" rel="noopener">OA Manager</a> 的「設定 → Messaging API」啟用。</li><li>在 <a href="https://developers.line.biz/" target="_blank" rel="noopener">LINE Developers</a> 對應 Channel 查到 Channel Secret／Access Token。</li><li>Webhook 網址要等 Worker 部署成功才填，不必現在猜網址。</li><li>建立／登入 <a href="https://dash.cloudflare.com/" target="_blank" rel="noopener">Cloudflare</a>，認識 Workers。</li></ol><div class="warn"><strong>安全規則：</strong>不要把 Key、Channel Secret、Token 貼到 AI 對話、GitHub 或這張學員網頁。它們只由學員本人設定到 Worker secrets 或本機 .dev.vars。</div><div class="sources"><a href="https://github.com/tmparz/vibe-coding-course-guide/blob/main/line-official-account-setup-guide.html" target="_blank" rel="noopener">原教材：含截圖的完整申請指南</a><a href="https://developers.line.biz/en/docs/messaging-api/getting-started/" target="_blank" rel="noopener">LINE 官方開通文件</a></div></div><div class="card"><h3>確認沒有誤用存放工具</h3><table><thead><tr><th>今天</th><th>明天</th></tr></thead><tbody><tr><td>Worker＋FAQ 靜態檔＋Gemini</td><td>D1：儲存預約時段、容量、預約紀錄</td></tr><tr><td>不需 R2、無 FAQ SQL</td><td>保留 FAQ，不把 FAQ 搬進 D1</td></tr></tbody></table></div>'},
+{id:"faq",time:"03:40–04:25",minutes:45,nav:"FAQ 與 Gemini",title:"CH 5｜整理自己的 FAQ，一次全部交給 Gemini",lead:"利用表單整理真實問答，直接產生 src/faq-data.js 的內容。",steps:[
+["我準備至少五題已確認的 FAQ","問題自然、答案可核對，不包含客戶姓名或敏感資料。"],
+["我能把問答匯出成 JavaScript","將產生的內容貼進 src/faq-data.js，不建立資料庫。"],
+["我知道 Gemini 不能回答 FAQ 沒提供的事實","無資料要引導真人，不能捏造費用或預約成功。"]
+],body:'<div class="card"><h3>FAQ 小工作台</h3><p>把自己的 FAQ 填在下面。按「產生 FAQ 程式資料」後，可以直接複製到 <code>src/faq-data.js</code>。這只是<strong>本機資料整理工具</strong>，不會呼叫 Gemini；請勿輸入敏感資訊。</p><div id="faqEditor"></div><div class="actions"><button class="btn" type="button" id="addFaq">＋ 新增一題</button><button class="btn primary" type="button" id="buildFaq">產生 FAQ 程式資料</button><button class="btn" type="button" id="copyFaq">複製產生結果</button></div><label class="field" for="faqOutput">複製後貼到 src/faq-data.js</label><textarea id="faqOutput" class="codebox" spellcheck="false" readonly placeholder="先填寫 FAQ，再按「產生 FAQ 程式資料」"></textarea><div class="toast" id="faqStatus" role="status"></div></div><div class="card"><h3>為什麼今天不用資料庫？</h3><p>因為今天只有少量、固定的問答。每次收到顧客訊息，Worker 都把<strong>所有有效 FAQ 和顧客問題一起</strong>送給 Gemini，讓 Gemini 根據資料整理回答。</p><pre>顧客問：「星期天可以去嗎？」\n＋\n完整 FAQ：\nQ：星期日有營業嗎？\nA：星期日公休。\nQ：服務需要預約嗎？\nA：請聯絡客服確認。\n...\n↓\nGemini：只依 FAQ 回答，沒有資訊就轉真人。</pre><div class="warn">每個問題都送完整 FAQ，意味著每次都會用掉 Gemini 輸入 tokens。免費額度有限；不代表永遠免費或回答永遠正確。</div></div>'},
+{id:"deploy",time:"04:25–05:25",minutes:60,nav:"部署與串接",title:"CH 6｜讓 LINE 真的連上 Worker＋Gemini",lead:"這是今天最重要的實作關卡：手機傳問句，得到根據 FAQ 的回覆。",steps:[
+["已編輯專案的 src/faq-data.js","問答資料與前一個單元匯出結果一致。"],
+["LINE 和 Gemini 金鑰已由本人設定到 Worker secrets","沒有進 GitHub、簡報或 AI 提示詞。"],
+["成功部署 Worker，並取得 HTTPS 網址","檢查 /health 回傳狀態 ok。"],
+["已把 Worker Webhook URL 填進 LINE Developers 並啟用","實際用手機加好友、傳一則 FAQ 問題並收到回覆。"]
+],body:'<div class="card"><h3>從現有完整課程專案開始</h3><p>老師可先用範例程式示範，不要求學員從零手寫 Webhook。這是與第二天預約課程共用的 Worker。</p><div class="actions"><button class="btn" id="copyCommands" type="button">複製第一天 PowerShell 準備指令</button><a class="btn" href="https://github.com/tmparz/vibe_coding_LINE_KETWORD" target="_blank" rel="noopener">打開課程 GitHub</a></div><pre>git clone https://github.com/tmparz/vibe_coding_LINE_KETWORD.git\ncd vibe_coding_LINE_KETWORD\nnpm install\nnpx wrangler login\nCopy-Item .dev.vars.example .dev.vars\nnpm run dev</pre><p>本機檔案 .dev.vars 的秘密只由學員自己填；遠端另以 <code>npx wrangler secret put ...</code> 設定。</p><div class="note">第一次進教室前，最好已安裝 Node.js 和 VS Code，並先測好帳號權限。正式做法請依 <a href="../docs/10-deployment-lab.md">完整部署指南</a>。</div></div><div class="card"><h3>講師帶著學員部署</h3><ol><li>編輯 FAQ → 儲存 → 本地健康檢查（/health）。</li><li>設定 LINE_CHANNEL_SECRET、LINE_CHANNEL_ACCESS_TOKEN、GEMINI_API_KEY 三個 Worker secrets。</li><li>執行 <code>npm run deploy</code>，取得 <code>https://&lt;worker&gt;.workers.dev</code>。</li><li>LINE Developers 設 Webhook：<code>https://&lt;worker&gt;.workers.dev/webhook/line</code>。</li><li>Verify、啟用 Use Webhook，確認不會跟 OA 內建回覆重複觸發。</li><li>手機測試問答，查 Worker logs 排錯。</li></ol><div class="warn">Webhook Verify 成功只是 LINE 能連到網址，不等於 Gemini 已正確作答。最後一定要手機實測。若貼出過真實金鑰，必須撤銷並輪替。</div></div><div class="card"><h3>複製用的 AI 協作提示詞</h3><textarea id="promptOutput" readonly spellcheck="false">請先閱讀這個專案的 src/faq-data.js、src/faq.js、src/index.js 和 src/line.js。我的 DAY 1 目標是：LINE 收到自然語言問題後，由 Worker 讀取完整 FAQ，連同顧客提問一次送到 Gemini API；只能依 FAQ 回答，不知道時請轉真人。今天不使用 D1、R2、向量搜尋，也不建立預約功能。請先列出資料流、部署步驟、最小測試清單；不要要求我提供任何 Secret、Token 或 API Key。</textarea><div class="actions"><button class="btn primary" id="copyPrompt" type="button">複製 AI 協作提示詞</button></div><div class="toast" id="copyState" role="status"></div></div>'},
+{id:"verify",time:"05:25–06:00",minutes:35,nav:"驗收與除錯",title:"CH 7｜實機驗收：真的能用，才算完成",lead:"老師驗收手機對話，不只看 AI 或程式顯示「完成」。",steps:[
+["相同問題的三種問法，答案事實一致","例如「幾點營業？」「幾點開？」「營業時間？」"],
+["詢問資料之外的問題，AI 不亂猜","例如問沒有提供的折扣，應引導真人客服。"],
+["測試人工客服與重複回覆情況","傳「人工」可以引導接手，確認 OA 內建回覆不與 Worker 重複。"],
+["說得出明天為什麼才需要 D1","因為預約時段、剩餘名額和預約紀錄會變動，需要保存狀態。"]
+],body:'<div class="card"><h3>驗收表｜請實際在 LINE 測</h3><table><thead><tr><th>測試</th><th>預期結果</th></tr></thead><tbody><tr><td>同義詞問 FAQ</td><td>根據已確認 FAQ 回答，不改變關鍵事實。</td></tr><tr><td>未知優惠／未公告價格</td><td>不捏造資訊，告知需真人確認。</td></tr><tr><td>叫機器人忽略規則</td><td>不接受顧客改寫 FAQ 使用規則。</td></tr><tr><td>LINE Webhook 未驗簽</td><td>應拒絕未通過簽章檢查的事件。</td></tr><tr><td>更新一題 FAQ 並重新部署</td><td>手機取得新資訊，而非舊答案。</td></tr><tr><td>查 Worker /health</td><td>顯示 Day 1 無 DB binding 也可正常運作。</td></tr></tbody></table><div class="note">第一天的完成標準：手機證據、FAQ 資料、金鑰安全與至少一題未知問題的處理。若未實際串 LINE，先標記為待驗收，不要宣稱已正式上線。</div></div><div class="card"><h3>常見卡關排查</h3><ol><li>沒回覆：先看 LINE Webhook 設定和 Worker logs。</li><li>401：確認 LINE Channel Secret 和驗證簽章的 raw body。</li><li>Gemini 失敗：檢查 secret 名稱、模型權限與 API 配額。</li><li>答錯：先改善 FAQ 內容，再調整提示詞和測試案例。</li><li>回覆兩次：檢查 LINE OA 內建自動回應與 Webhook 是否同時啟用。</li></ol><div class="warn">本課範例是教學 MVP，正式營運之前需補足隱私告知、存取控制、異常監控和維護流程。</div></div><div class="card"><h3>接上 DAY 2</h3><p>明天才用 Vibe Coding 建立 D1 時段預約：顧客傳「時段」→ 查看名額 →「預約 S001」→ 建立待確認預約。FAQ 仍由今天的 Gemini 模組處理。</p><p><a class="btn primary" href="https://github.com/tmparz/vibe-coding-course-guide" target="_blank" rel="noopener">前往原第二天課程教材 ↗</a></p></div>'}
+];
+
+const nav=document.getElementById("nav");
+const stageContent=document.getElementById("stageContent");
+const storagePrefix="wom_line_day1_20261017_";
+function getState(k,def){try{let x=localStorage.getItem(storagePrefix+k);return x===null?def:JSON.parse(x)}catch{return def}}
+function setState(k,v){try{localStorage.setItem(storagePrefix+k,JSON.stringify(v))}catch{}}
+let active=getState("active",0);
+if(!Number.isInteger(active)||active<0||active>=STAGES.length)active=0;
+const checkIds=STAGES.flatMap(s=>s.steps.map((_,i)=>s.id+"_"+i));
+function progress(){
+ const done=checkIds.filter(k=>getState("check_"+k,false)).length;
+ const max=checkIds.length;
+ document.getElementById("progressBar").style.width=Math.round(done*100/max)+"%";
+ document.getElementById("progressText").textContent="已完成 "+done+" / "+max+" 項檢查 · "+Math.round(done*100/max)+"%";
+ return done;
+}
+function render(){
+ nav.replaceChildren();
+ STAGES.forEach((s,i)=>{
+   const btn=document.createElement("button");btn.type="button";btn.className="stagebtn";btn.setAttribute("aria-current",i===active?"step":"false");
+   const num=document.createElement("span");num.className="n";num.textContent=String(i+1).padStart(2,"0");
+   const name=document.createElement("span");name.textContent=s.nav;
+   const clock=document.createElement("span");clock.className="time";clock.textContent=s.minutes+" 分";
+   btn.append(num,name,clock);btn.addEventListener("click",()=>go(i));nav.append(btn);
+ });
+ const s=STAGES[active];
+ stageContent.innerHTML='<section class="stage"><div class="section-title"><div class="kicker">DAY 1 · UNIT '+String(active+1).padStart(2,"0")+' / 08</div><h2>'+s.title+'</h2><p class="lead">'+s.lead+'</p><div class="stage-status"><span>'+s.time+'</span><span>'+s.minutes+' 分鐘</span><span>累計 '+STAGES.slice(0,active+1).reduce((n,x)=>n+x.minutes,0)+'／360 分鐘</span></div></div>'+s.body+'<div class="card"><h3>本單元完成檢查</h3><div id="tasks"></div></div><div class="next"><button class="btn" type="button" id="prev"'+(active===0?' disabled':'')+'>← 上一單元</button><button class="btn primary" type="button" id="next">'+(active===STAGES.length-1?"回到課程總覽":"下一單元 →")+'</button></div></section>';
+ const tasks=document.getElementById("tasks");
+ s.steps.forEach((step,i)=>{
+   const key=s.id+"_"+i;const lab=document.createElement("label");lab.className="task"+(getState("check_"+key,false)?" done":"");
+   const cb=document.createElement("input");cb.type="checkbox";cb.checked=getState("check_"+key,false);cb.dataset.key=key;
+   cb.addEventListener("change",()=>{setState("check_"+key,cb.checked);lab.classList.toggle("done",cb.checked);progress()});
+   const span=document.createElement("span");const title=document.createElement("strong");title.textContent=step[0];span.append(title,document.createElement("br"),document.createTextNode(step[1]));lab.append(cb,span);tasks.append(lab);
+ });
+ document.getElementById("prev").addEventListener("click",()=>go(active-1));
+ document.getElementById("next").addEventListener("click",()=>go(active===STAGES.length-1?0:active+1));
+ attachEvents();
+ progress();
+}
+function go(i){if(i<0||i>=STAGES.length)return;active=i;setState("active",active);render();window.scrollTo({top:document.getElementById("content").getBoundingClientRect().top+window.scrollY-85,behavior:"smooth"})}
+document.getElementById("continue").addEventListener("click",()=>go(active));
+async function copyText(content,status){
+ let ok=false;
+ try{await navigator.clipboard.writeText(content);ok=true}catch(e){
+   const t=document.createElement("textarea");t.value=content;document.body.append(t);t.select();
+   try{ok=document.execCommand("copy")}catch(e2){}t.remove();
+ }
+ if(status)status.textContent=ok?"已複製到剪貼簿":"瀏覽器未允許複製，請自行選取內容複製。";
+}
+const faqDefault=[
+["營業時間是什麼時候？","本帳號為教學示範，營業時間尚未公告，請聯繫真人客服。"],
+["星期日有營業嗎？","本帳號為教學示範，星期日營業資訊尚未確認。"],
+["可以預約服務嗎？","請傳「人工」聯繫客服確認預約資訊。"],
+["可以刷卡嗎？","這是教學示範帳號，尚未串接信用卡付款。"],
+["如何聯絡真人客服？","請傳「人工」並等待管理者依服務時間回覆。"]
+];
+let faqs=getState("faqs",faqDefault);
+if(!Array.isArray(faqs))faqs=faqDefault.map(x=>x.slice());
+function drawFaqs(){
+ const root=document.getElementById("faqEditor");if(!root)return;
+ root.replaceChildren();
+ faqs.forEach((pair,i)=>{
+   const row=document.createElement("div");row.className="faq-row";
+   for(let field=0;field<2;field++){
+     const label=document.createElement("label");label.className="field";label.textContent=(field===0?"Q 顧客怎麼問":"A 確認過的回答")+" · "+(i+1);
+     const input=document.createElement("input");input.type="text";input.maxLength=800;input.value=pair[field]||"";input.setAttribute("aria-label",label.textContent);
+     input.addEventListener("input",()=>{faqs[i][field]=input.value;setState("faqs",faqs)});
+     label.append(input);row.append(label);
+   }
+   const del=document.createElement("button");del.type="button";del.className="smallbutton";del.textContent="刪除";del.setAttribute("aria-label","刪除 FAQ "+(i+1));
+   del.addEventListener("click",()=>{faqs.splice(i,1);setState("faqs",faqs);drawFaqs()});row.append(del);root.append(row);
+ });
+}
+function attachEvents(){
+ if(active===2){const i=document.getElementById("demoInput"),o=document.getElementById("demoReply");
+ const run=()=>{o.textContent=i.value.trim()==="營業時間"?"【固定文字示意】週一到週六 10:00–19:00（教學假資料）":"【固定文字示意】未命中預先設定的完全相同關鍵字，改採預設回覆或無回應（依實際設定）。"};
+ document.getElementById("demoRun").addEventListener("click",run);run();
+ }
+ if(active===5){
+  drawFaqs();document.getElementById("addFaq").addEventListener("click",()=>{if(faqs.length>=30)return document.getElementById("faqStatus").textContent="教學工作台最多 30 題，這不是 Gemini 的硬限制。";faqs.push(["",""]);setState("faqs",faqs);drawFaqs()});
+  const build=()=>{const values=faqs.map(row=>({question:String(row[0]||"").trim(),answer:String(row[1]||"").trim()})).filter(v=>v.question&&v.answer);
+  if(!values.length){document.getElementById("faqStatus").textContent="先填寫至少一組完整問答。";return""}
+  const result="export const faqData = "+JSON.stringify(values,null,2)+";\n";
+  document.getElementById("faqOutput").value=result;document.getElementById("faqStatus").textContent="已產生 "+values.length+" 組 FAQ，請複製到 src/faq-data.js。";return result;
+  };
+  document.getElementById("buildFaq").addEventListener("click",build);
+  document.getElementById("copyFaq").addEventListener("click",()=>{const s=build();if(s)copyText(s,document.getElementById("faqStatus"))});
+ }
+ if(active===6){
+  document.getElementById("copyPrompt").addEventListener("click",()=>copyText(document.getElementById("promptOutput").value,document.getElementById("copyState")));
+  document.getElementById("copyCommands").addEventListener("click",()=>copyText("git clone https://github.com/tmparz/vibe_coding_LINE_KETWORD.git\ncd vibe_coding_LINE_KETWORD\nnpm install\nnpx wrangler login\nCopy-Item .dev.vars.example .dev.vars\nnpm run dev",document.getElementById("copyState")));
+ }
+}
+render();
+</script>
+</body></html>

@@ -10,6 +10,7 @@
 - Demo 只支援**名額型時段預約**，不支援付款、取消回補、複雜排班、員工指派、顧客身分核驗。
 
 ## 教材與進度
+- **[DAY 1 六小時完整互動式學員網頁](day1/index.html)**：依原六小時 Vibe Coding 網頁的分章節、圖解、步驟勾選與複製提示詞形式，加入 LINE OA 後台實作、官方 AI 比較、網路基礎、FAQ 編輯器和部署驗收。
 - [互動式進度與提示詞](site/index.html)（下載專案後開啟，尚未部署 Pages）
 - [兩日 12 小時課綱](docs/01-course-plan.md)
 - [課前準備](docs/02-student-preflight.md)

@@ -8,19 +8,23 @@
 - DAY 1＝完整 FAQ 靜態檔 + 顧客提問 → Cloudflare Worker → Gemini API → LINE 回答。無 D1、無 R2 必修。
 - DAY 2＝Vibe Coding 規劃 LINE 預約流程 → 時段與預約寫入 D1。FAQ 不搬進 D1。
 
-## DAY 1｜LINE OA 後台與 Gemini 自然語言 FAQ
+## DAY 1｜LINE OA 後台 → 網路基礎 → 完整 FAQ＋Gemini（360 分鐘）
 | 時間 | 分鐘 | 教學內容 | 學員成果 |
 |---|---:|---|---|
-| 00:00–00:35 | 35 | AI 入門：提問、查證、需求與資訊安全 | 整理出五個真實 FAQ |
-| 00:35–01:30 | 55 | LINE OA Manager：歡迎訊息、聊天、自動回覆、關鍵字、圖文選單 | 熟悉 OA 後台 |
-| 01:30–02:10 | 40 | Messaging API、Webhook、三把金鑰與資料流 | 畫出 LINE → Worker → Gemini |
-| 02:10–02:35 | 25 | Cloudflare Workers、雲端部署；簡介為何本日不需 R2/D1 | 開好 Worker 環境 |
-| 02:35–03:20 | 45 | 編輯 src/faq-data.js，將所有 FAQ 整理成結構化問答 | ≥5 題 QA，不需建立資料表 |
-| 03:20–04:10 | 50 | Gemini API Key 的安全設定；完整 FAQ + 顧客問題一次送入，限定依資料回答 | 自然語言問答成功 |
-| 04:10–05:15 | 65 | Worker 部署、LINE Webhook 簽章與實機串接 | 手機 LINE 得到回答 |
-| 05:15–06:00 | 45 | 不同問法、無答案、人工客服、錯誤處理與驗收 | 完成 Day 1 FAQ 成果 |
+| 00:00–00:25 | 25 | AI 入門：工作問題、可信資料、回答界線 | 說出今日作品目標 |
+| 00:25–01:40 | 75 | **LINE 官方帳號後台實作**：歡迎訊息、自動回覆、關鍵字、聊天、圖文選單 | 完成一筆關鍵字回應 |
+| 01:40–02:05 | 25 | 免費功能、LINE AI 聊天機器人（β）與自建 Gemini 比較 | 理解能力與成本差異 |
+| 02:05–02:50 | 45 | **原六小時 Vibe Coding 重要網路基礎提前**：URL、HTTPS、API、JSON、Webhook、Request／Response、雲端部署 | 畫出 LINE → Worker → Gemini → LINE |
+| 02:50–03:40 | 50 | Messaging API、LINE 三把鑰匙、Cloudflare Worker 環境準備 | 找到設定入口、能登入開發環境 |
+| 03:40–04:25 | 45 | 整理全部 FAQ、產生 src/faq-data.js；介紹 Gemini 回覆規則 | 有 5–10 題 FAQ |
+| 04:25–05:25 | 60 | Gemini Key、Worker Secrets、部署、LINE Webhook 串接 | 手機可以收到 AI FAQ 回覆 |
+| 05:25–06:00 | 35 | 多種問法、未知問題、人工轉接、部署與金鑰安全驗收 | 完成第一天作品與測試紀錄 |
 
-**Day 1 成果：** 即使顧客不用精準關鍵字，也能依所有已確認的 FAQ 得到合理回答。未知問題需轉真人；AI 不是事實保證者。
+**必須維持的先修順序：** 先操作 LINE OA → 體驗固定關鍵字的限制 → 比較現成 LINE AI → 教必要網路與 API 基礎 → 進入自建 Gemini FAQ。原第二天教材中的「網路名詞、LINE 資料流、三把鑰匙、Worker、Webhook」已移到第一天教授，第二天不要重複教初階內容。
+
+**第一天互動網頁：** [打開完整學員手冊](../day1/index.html)。可逐階段操作、勾選進度，練習 FAQ 並產出可複製的 JS 資料、查看原講師示範圖與安全提示詞。
+
+**第一天不需要 D1 或 R2。** 每次呼叫 Gemini 直接傳整份已確認 FAQ + 顧客問題；API／Worker 雖有免費額度，仍需注意限制。LINE 100 元 AI 方案亦能做自然語言 FAQ，所以課程應教學員依情境選擇現成工具或客製化。
 
 ## DAY 2｜Vibe Coding：LINE 時段與預約管理
 | 時間 | 分鐘 | 教學內容 | 學員成果 |
