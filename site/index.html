@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>女力 LINE OA × AI 工作流進階班｜12 小時實作路線</title>
+<meta name="description" content="兩天各六小時，從 LINE 官方帳號、AI FAQ 到 Vibe Coding 接單原型">
+<style>
+:root{--wine:#765367;--wine-dark:#58394d;--forest:#52756b;--ink:#37353b;--muted:#716d72;--paper:#fffdfa;--pale:#f8f3f2;--line:#e9ddde;--soft:#f0e3e6}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--pale);color:var(--ink);font-family:system-ui,"Microsoft JhengHei",sans-serif;line-height:1.75}
+a{color:var(--wine-dark);text-underline-offset:3px}header{background:linear-gradient(123deg,#f6e5e4 0%,#f8efea 43%,#e9efe6 100%);padding:55px 24px 40px;border-bottom:1px solid var(--line)}
+.wrap{width:min(1100px,100%);margin:auto}.eyebrow{display:inline-block;background:#ffffffb3;border:1px solid #ead4dd;color:var(--wine);font-size:13px;border-radius:50px;padding:5px 13px;font-weight:700;letter-spacing:1px}
+h1{font-size:clamp(34px,5vw,58px);line-height:1.23;letter-spacing:-1px;margin:22px 0 16px;color:var(--wine-dark)}h1 small{font-size:.54em;font-weight:500;display:block;margin-top:14px}
+.sub{max-width:700px;font-size:19px;color:#6a6068}.metric{display:flex;gap:14px;flex-wrap:wrap;margin-top:25px}.metric>span{border:1px solid #e2cfd1;background:#fffafaaf;border-radius:9px;padding:8px 16px;font-size:14px}
+main{padding:28px 20px 90px}.nav{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:25px}
+button{border:0;font:inherit;cursor:pointer}.daybtn{border-radius:12px;padding:12px 20px;background:white;border:1px solid var(--line);color:var(--wine);font-weight:750}
+.daybtn[aria-selected=true]{color:#fff;background:var(--wine);box-shadow:0 10px 23px #76536725}
+.intro{padding:24px;background:var(--paper);border-radius:16px;border:1px solid var(--line);margin:16px 0 20px}
+.intro h2{margin:0 0 5px;color:var(--wine-dark);font-size:26px}.intro p{margin:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:15px}.card{padding:20px;background:white;border:1px solid var(--line);border-radius:14px;position:relative}
+.card strong{font-size:18px;color:#493f47;display:block}.slot{font-size:12px;font-weight:800;letter-spacing:.3px;color:var(--forest)}
+.card p{margin:8px 0;color:var(--muted);font-size:14px}.result{margin-top:14px;border-top:1px dashed #e5d9db;padding-top:10px;color:#617969;font-size:13px}
+.progressrow{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin:20px 0;font-size:14px}.bar{height:8px;flex:1;min-width:170px;border-radius:20px;background:#eadfe1;overflow:hidden}.fill{height:100%;width:0;background:var(--forest);transition:width .25s}
+.check{display:flex;align-items:center;gap:9px;font-size:13px;font-weight:650;margin-top:14px;color:var(--wine)}input[type=checkbox]{width:17px;height:17px;accent-color:var(--forest)}
+.callout{background:#eaf0eb;border-left:4px solid var(--forest);padding:18px 21px;border-radius:0 10px 10px 0;margin-top:20px}
+.bottom{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:25px}.panel{background:white;border:1px solid var(--line);border-radius:14px;padding:22px}
+.panel h3{margin:0 0 10px;color:var(--wine)}.panel a{display:block;padding:4px 0;font-size:14px}
+.copy{background:var(--forest);color:white;padding:10px 13px;border-radius:9px;font-size:13px;margin-top:8px;font-weight:700}.note{font-size:13px;color:var(--muted)}
+footer{margin:35px 0 0;font-size:13px;color:#78717a;border-top:1px solid var(--line);padding:18px 0}
+@media(max-width:680px){.bottom{grid-template-columns:1fr}header{padding:37px 19px}h1{font-size:33px}}
+</style></head>
+<body>
+<header><div class="wrap">
+<span class="eyebrow">WOMEN × DIGITAL WORKFORCE</span>
+<h1>從 LINE 到 AI，<br>做出妳的第一套工作小系統<small>女力 LINE OA × AI 工作流進階班</small></h1>
+<p class="sub">兩天各六小時。先讓 LINE 聽得懂顧客的問題，再讓它能展示商品、記錄預約與接單。每一段都有可以驗收的小成果。</p>
+<div class="metric"><span>DAY 1｜AI FAQ</span><span>DAY 2｜Vibe Coding 接單</span><span>12 小時實作</span><span>Cloudflare Worker + D1 + Gemini</span></div>
+</div></header>
+<main class="wrap">
+<nav class="nav" role="tablist" aria-label="選擇課程日">
+<button id="b1" class="daybtn" role="tab" aria-selected="true">第一天 · LINE AI FAQ</button>
+<button id="b2" class="daybtn" role="tab" aria-selected="false">第二天 · Vibe Coding MVP</button>
+</nav>
+<div id="intro" class="intro"></div>
+<div class="progressrow"><strong id="progressLabel">完成進度 0 / 8</strong><div class="bar" aria-hidden="true"><div class="fill" id="fill"></div></div><button id="reset" class="daybtn" type="button">重設當天進度</button></div>
+<div id="steps" class="grid"></div>
+<div id="end" class="callout"></div>
+<div class="bottom">
+<section class="panel"><h3>課程文件與示範系統</h3>
+<a href="../docs/01-course-plan.md">完整 12 小時時間表</a>
+<a href="../docs/02-student-preflight.md">課前準備</a>
+<a href="../docs/03-line-setup.md">LINE 後台操作手冊</a>
+<a href="../docs/04-faq-storage.md">D1 vs R2 怎麼選</a>
+<a href="../docs/05-day2-project.md">第二天專題規格</a>
+<a href="../docs/07-acceptance.md">功能驗收表</a>
+<a href="../docs/10-deployment-lab.md">PowerShell 部署步驟</a>
+<a href="../docs/11-worksheets.md">兩日學員工作表</a>
+<a href="../README.md">返回 Repo 說明</a>
+</section>
+<section class="panel"><h3>AI 協作，不必從空白開始</h3>
+<p class="note">按下按鈕將安全版提示詞複製到剪貼簿，從你的程式協作 AI 貼上開始。切勿把 LINE Secret 或 API Key 複製進提示詞。</p>
+<button class="copy" id="copy1">複製 DAY 1 FAQ 提示詞</button><br><button class="copy" id="copy2">複製 DAY 2 接單提示詞</button>
+<div class="note" id="copyMsg" role="status" style="margin-top:12px"></div>
+<a href="../docs/08-prompts.md">查看更多分段提示詞</a>
+</section>
+</div>
+<footer>教學示範專案｜需另行完成金流、個資告知、身分驗證與正式安全檢測才能承接真實交易。學習進度只儲存在本機瀏覽器，不會回傳網站。</footer>
+</main>
+<script>
+const d1=[
+["00:00–00:35","AI 入門與工作任務","提問、查證、資料保護；先整理自己的五個 FAQ。","列出五題真實顧客常問的問題。"],
+["00:35–01:30","LINE OA 管理後台","認識聊天、自動回應、關鍵字回應與圖文選單。","找到 OA 後台操作入口。"],
+["01:30–02:10","Messaging API 與資料流","在 OA Manager 啟用 Messaging API、認識 Webhook 與三把鑰匙。","畫出 LINE → Worker → LINE 的資料流。"],
+["02:10–02:35","Cloudflare 環境","認識 Worker、D1、R2；選擇儲存 FAQ 的方法。","建立自己的測試環境。"],
+["02:35–03:20","D1 FAQ 知識庫","建立 FAQ 資料表、寫入五個問答、讀取資料。","查出至少五筆正確資料。"],
+["03:20–04:10","Gemini 自然語言回答","金鑰存 Worker secret；限定 AI 只能回答已確認的 FAQ。","改用不同問法，也能取得正確答案。"],
+["04:10–05:15","Webhook 上線","簽章驗證、Worker 部署、LINE 正式接通。","手機傳問句能看到機器人回覆。"],
+["05:15–06:00","驗收與人工轉接","測答非所問、資料不足、重複回覆與人工接手。","完成第一天 FAQ 驗收。"]
+];
+const d2=[
+["00:00–00:25","選擇商業情境","商品販售或課程名額，確定哪些是 MVP 的核心。","寫好一頁需求單。"],
+["00:25–00:55","Vibe Coding 需求拆解","欄位設計、分段提示詞、測試案例。","寫出要交給 AI 的安全提示詞。"],
+["00:55–01:50","商品／課程管理","學會新增、更新、上下架、庫存／名額。","管理端有兩筆可用項目。"],
+["01:50–02:30","D1 訂單與庫存","定義待確認訂單、避免重送或售罄時錯誤扣庫存。","成功寫入一筆測試訂單。"],
+["02:30–03:05","LINE 關鍵字分流","商品、課程、訂購 SKU 與 FAQ 共存。","手機可以查列表並下單。"],
+["03:05–03:50","Worker 串接與通知","整合 Messaging API、部署與管理員推播。","顧客及管理員收到訊息。"],
+["03:50–04:40","Rich Menu 與真人交接","設計「商品／課程／人工」入口，保留客戶對話。","點選圖文選單可觸發文字。"],
+["04:40–05:25","端到端測試與除錯","測售罄、下架、重送、假簽章、FAQ 分流。","能從錯誤訊息找出問題。"],
+["05:25–06:00","作品發表與下一步","確認 MVP 限制、展示成果與課後優化。","帶走可展示的學習作品。"]
+];
+let day=1;
+const root=document.getElementById("steps");
+function render(){
+  const data=day===1?d1:d2;
+  document.getElementById("b1").setAttribute("aria-selected",String(day===1));
+  document.getElementById("b2").setAttribute("aria-selected",String(day===2));
+  document.getElementById("intro").replaceChildren();
+  const h=document.createElement("h2"),p=document.createElement("p");
+  h.textContent=day===1?"第一天｜讓 LINE 學會回答顧客問題":"第二天｜從需求到接單流程，打造工作 MVP";
+  p.textContent=day===1?"以 D1 作為預設 FAQ 資料來源、R2 為選修。目標是讓 Gemini 依據確認過的資訊回答，而不是自由猜測。":"延續第一天 LINE + Worker + D1，加入商品資料與待確認訂單。保留第一天的 FAQ，不重新申請帳號。";
+  document.getElementById("intro").append(h,p);
+  root.replaceChildren();
+  let done=0;
+  data.forEach((s,i)=>{
+    const card=document.createElement("article");card.className="card";
+    const slot=document.createElement("span");slot.className="slot";slot.textContent=s[0];
+    const title=document.createElement("strong");title.textContent=(i+1)+". "+s[1];
+    const desc=document.createElement("p");desc.textContent=s[2];
+    const result=document.createElement("div");result.className="result";result.textContent="小成果｜"+s[3];
+    const lab=document.createElement("label");lab.className="check";
+    const cb=document.createElement("input");cb.type="checkbox";cb.checked=localStorage.getItem("course_d"+day+"_s"+i)==="1";
+    if(cb.checked)done++;
+    cb.onchange=()=>{localStorage.setItem("course_d"+day+"_s"+i,cb.checked?"1":"0");render();};
+    lab.append(cb,document.createTextNode("我已完成這個單元"));card.append(slot,title,desc,result,lab);root.append(card);
+  });
+  document.getElementById("progressLabel").textContent="完成進度 "+done+" / "+data.length;
+  document.getElementById("fill").style.width=100*done/data.length+"%";
+  document.getElementById("end").textContent=day===1?"第一天驗收：3 種問法回答相同事實；遇到未知問題轉真人；金鑰未公開。":"第二天驗收：LINE 顯示商品 → 建立測試訂單 → D1 名額變動 → 管理員收到通知；FAQ 仍可正常回答。";
+}
+document.getElementById("b1").onclick=()=>{day=1;render();};
+document.getElementById("b2").onclick=()=>{day=2;render();};
+document.getElementById("reset").onclick=()=>{const n=day===1?d1.length:d2.length;for(let i=0;i<n;i++)localStorage.removeItem("course_d"+day+"_s"+i);render();};
+const prompts=[
+"請先檢視本專案中的 Cloudflare Worker、D1 及 LINE Webhook 程式。我要建立以 D1 常見問答為依據的 Gemini 自然語言客服。只根據已核准 FAQ 回答，沒有答案就引導人工客服。請先列出改動計畫、測試案例和安全風險，不要向我索取任何 API Key。",
+"請從現有的 LINE FAQ Worker 增加商品清單及測試訂單。顧客輸入「商品」查看資料，輸入「訂購 P001」才建立訂單；FAQ 照常運作。需要 D1 交易安全、防重送、下架與庫存為零的錯誤處理。先提出一頁規格與測試方法，再逐步修改程式。不要將任何真實密鑰放入提示詞。"
+];
+async function copy(i){
+try{await navigator.clipboard.writeText(prompts[i]);document.getElementById("copyMsg").textContent="已複製，可貼至 AI 協作工具。";}
+catch{document.getElementById("copyMsg").textContent="瀏覽器限制複製，請改從 docs/08-prompts.md 複製。";}
+}
+document.getElementById("copy1").onclick=()=>copy(0);
+document.getElementById("copy2").onclick=()=>copy(1);
+render();
+</script>
+</body></html>
