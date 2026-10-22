@@ -22,9 +22,13 @@
 
 **DAY 1 機器人不回**：Use webhook 是否開啟 → Verify 結果 → Worker secrets（三把都有嗎）→ FAQ 檔 → Gemini 額度。
 
-**DAY 2 預約沒反應**：按鈕送出的文字格式 → D1 binding 與資料表 → 商品是否上架、在有效期內、有庫存 → Worker 日誌。
+**DAY 2 預約沒反應**：Webhook URL 是不是還指向第一天的 Worker（最常見）→ 按鈕送出的文字格式 → D1 binding 與資料表 → 商品是否上架、在有效期內、有庫存 → Worker 日誌。
 
 **收到兩則回覆**：OA 的自動回應訊息沒關。
+
+**後台打不開或一直要密碼**：請 Codex 再說一次 ADMIN_PASSWORD；忘了就請它重設一組。
+
+**AI 一直回「請傳人工」**：先看是不是連續問太快（免費額度每分鐘上限，等一分鐘）；再用 `npx wrangler tail` 看 Gemini 回了什麼錯誤（404 = 模型名稱不對）。
 
 **AI 答錯**：先檢查 FAQ 本身寫得對不對，再看提示詞；不要只聽 Codex 說「已修好」，一定用手機實測。
 
