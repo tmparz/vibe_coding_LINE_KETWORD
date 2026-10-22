@@ -5,10 +5,10 @@
 對象：小班（約 3 人），沒有程式基礎，AI 經驗從完全沒用過到會用 AI 作圖都有
 教材：所有學員用**同一份教材、同一個流程**，不因人調整內容
 
-學員網頁（`vibe-coding-course-guide` 的 `two-day-v2` 分支）：
-- 兩日入口：`course/index.html`
-- DAY 1：`day1/index.html`
-- DAY 2：根目錄 `index.html`
+學員網頁：
+- 兩日入口：<https://tmparz.github.io/vibe-coding-course-guide/course/>
+- DAY 1：<https://tmparz.github.io/vibe-coding-course-guide/day1/>
+- DAY 2：<https://tmparz.github.io/vibe-coding-course-guide/>
 
 ## 課程目標
 

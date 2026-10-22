@@ -5,10 +5,10 @@
 1. **DAY 1 的 Worker 範本**：學員在課堂上請 Codex clone 這個 repo，把自己的 FAQ 寫進 `src/faq-data.js`，部署成 LINE AI 客服。
 2. **老師文件**：課程規劃、課前檢查、排錯、驗收都在 `docs/`。
 
-學員網頁在另一個 repo：[vibe-coding-course-guide](https://github.com/tmparz/vibe-coding-course-guide)（`two-day-v2` 分支）
-- 兩日入口：`course/`
-- DAY 1：`day1/`
-- DAY 2：根目錄（Step 1–10）
+學員網頁（另一個 repo [vibe-coding-course-guide](https://github.com/tmparz/vibe-coding-course-guide)，Pages 從 `two-day-v2` 分支發布）：
+- 兩日入口：<https://tmparz.github.io/vibe-coding-course-guide/course/>
+- DAY 1：<https://tmparz.github.io/vibe-coding-course-guide/day1/>
+- DAY 2：<https://tmparz.github.io/vibe-coding-course-guide/>（Step 1–10）
 
 ## 兩天在做什麼
 

@@ -6,7 +6,7 @@
 - Cloudflare D1（第二天商品、訂單、客人狀態、問題紀錄）：https://developers.cloudflare.com/d1/get-started/
 - Cloudflare R2（非必修）：https://developers.cloudflare.com/r2/get-started/workers-api/
 - Gemini API：https://ai.google.dev/gemini-api/docs/
-- 學員網頁（DAY 1、DAY 2）：https://github.com/tmparz/vibe-coding-course-guide （`two-day-v2` 分支）
+- 學員網頁：兩日入口 https://tmparz.github.io/vibe-coding-course-guide/course/ ／ DAY 1 https://tmparz.github.io/vibe-coding-course-guide/day1/ ／ DAY 2 https://tmparz.github.io/vibe-coding-course-guide/
 - Codex：https://openai.com/codex/
 - Google AI Studio（Gemini 鑰匙與額度）：https://aistudio.google.com/
 

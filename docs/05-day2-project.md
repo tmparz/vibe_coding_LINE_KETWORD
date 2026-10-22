@@ -1,6 +1,6 @@
 # 第二天專題：LINE 預約系統
 
-第二天以 [vibe-coding-course-guide](https://github.com/tmparz/vibe-coding-course-guide)（`two-day-v2` 分支）根目錄的 Step 1–10 為準。學員在網頁填好欄位，頁面會組出一段整合提示詞，交給 Codex 建立整套系統。
+第二天以 [DAY 2 學員網頁](https://tmparz.github.io/vibe-coding-course-guide/) 的 Step 1–10 為準。學員在網頁填好欄位，頁面會組出一段整合提示詞，交給 Codex 建立整套系統。
 
 > 本 repo 的 `wrangler.day2.jsonc`、`src/bookings.js`、`migrations/` 是早期「時段＋預約 S001」版本，**課程不再使用**，保留作為老師參考。
 
