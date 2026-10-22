@@ -1,7 +1,7 @@
 # FAQ：本課採「一次給 Gemini 完整 FAQ」的最簡方案
 
 ## Day 1 必修：靜態 FAQ
-學員編輯 src/faq-data.js，整理自己的問答。例如：
+學員在第一天頁面用 AI 整理好 FAQ，由 Codex 依部署提示詞寫進 src/faq-data.js。例如：
 ~~~js
 export const faqData = [
   { question: "星期日有營業嗎？", answer: "星期日公休。" },
@@ -18,12 +18,12 @@ export const faqData = [
 |---|---|---|
 | 靜態 JS FAQ | 保存全部問答，直接由 Worker 打包 | **是，預設** |
 | Cloudflare R2 | 未來選修：放 faq.json，Worker 一次讀入 | 否 |
-| Cloudflare D1 | **Day 2 專用：時段、名額、預約紀錄** | 否 |
+| Cloudflare D1 | **Day 2 專用：商品、訂單、客人狀態、問題紀錄** | 否 |
 
 若學員不想進行 R2 的帳單設定，完全不影響第一天。此 repo 的 FAQ 程式亦支援選修 R2：設定 FAQ_SOURCE=r2 和 FAQ_BUCKET binding，於 bucket 放置 faq.json 陣列；這不是預設流程。
 
 ## 使用完整 FAQ 仍要知道的限制
 - 「context window 夠大」不等於「免費」：每位顧客的每則問題，都會重複計費完整 FAQ 的輸入 tokens；資料量與訊息量越大，費用越高。
-- 提供給 Gemini 的 FAQ 必須已確認，不應含顧客個資；不要把金鑰送給模型。
+- 提供給 Gemini 的 FAQ 必須已確認，不應含顧客個資，也不要把鑰匙寫進 FAQ 內容。
 - 資料夠少時品質通常可控，但 AI 仍可能答錯、誤讀或忽略某段資訊；請實際測同義問題、沒有答案的問題和提示注入。
 - 教材為避免輸入量失控，當 FAQ JSON 文字超過示範安全閾值時會改提示聯繫真人；不會默默只傳前 30 題。

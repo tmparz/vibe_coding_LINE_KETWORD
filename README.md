@@ -1,68 +1,67 @@
-# 女力 LINE OA × AI 工作流進階班｜12 小時實作教材
+# 女力 LINE OA × AI 工作流進階班｜DAY 1 FAQ 機器人範本與老師文件
 
-> DAY 1：LINE 後台 + 自然語言 FAQ（直接把完整 FAQ 與顧客問題送 Gemini，不用資料庫）。
-> DAY 2：Vibe Coding + LINE 預約系統（**D1 只負責時段與預約紀錄**）。
+這個 repo 有兩個用途：
 
-## 兩天是兩種獨立功能
-- **FAQ 模組**：學員把已確認的問答編寫在 [src/faq-data.js](src/faq-data.js)，Worker 收到 LINE 訊息後，將顧客原句與**完整有效 FAQ** 一起傳給 Gemini。無 SQL、無搜尋／向量庫、無 RAG；第一天**不必建 D1，也不必開 R2 或提供信用卡**。
-- **預約模組**：第二天才用 D1 儲存時段、名額、預約事件與狀態。明確指令「時段」與「預約 S001」走預約邏輯，其他自然語言問題仍由 Day 1 FAQ 處理。D1 不用來存 FAQ。
-- R2 僅為未來可選的 FAQ JSON 保存途徑；小型教學直接用靜態檔最省步驟。
-- Demo 只支援**名額型時段預約**，不支援付款、取消回補、複雜排班、員工指派、顧客身分核驗。
+1. **DAY 1 的 Worker 範本**：學員在課堂上請 Codex clone 這個 repo，把自己的 FAQ 寫進 `src/faq-data.js`，部署成 LINE AI 客服。
+2. **老師文件**：課程規劃、課前檢查、排錯、驗收都在 `docs/`。
 
-## 教材與進度
-- **[DAY 1 六小時完整互動式學員網頁](day1/index.html)**：依原六小時 Vibe Coding 網頁的分章節、圖解、步驟勾選與複製提示詞形式，加入 LINE OA 後台實作、官方 AI 比較、網路基礎、FAQ 編輯器和部署驗收。
-- [互動式進度與提示詞](site/index.html)（下載專案後開啟，尚未部署 Pages）
-- [兩日 12 小時課綱](docs/01-course-plan.md)
-- [課前準備](docs/02-student-preflight.md)
-- [LINE OA 管理後台](docs/03-line-setup.md)
-- [FAQ 如何選擇儲存方式](docs/04-faq-storage.md)
-- [第二天預約專題](docs/05-day2-project.md)
-- [講師與助教 SOP](docs/06-instructor-sop.md)
-- [驗收表](docs/07-acceptance.md)
-- [AI 提示詞](docs/08-prompts.md)
-- [官方文件與限制](docs/09-resources.md)
-- [Windows PowerShell 實作指引](docs/10-deployment-lab.md)
-- [學員工作表](docs/11-worksheets.md)
+學員網頁在另一個 repo：[vibe-coding-course-guide](https://github.com/tmparz/vibe-coding-course-guide)（`two-day-v2` 分支）
+- 兩日入口：`course/`
+- DAY 1：`day1/`
+- DAY 2：根目錄（Step 1–10）
 
-## 第一天：0 資料庫啟動
-1. 課前註冊 LINE OA、Cloudflare、Google AI Studio；備妥 LINE Channel Secret、Access Token、Gemini Key。
-2. 開啟 **src/faq-data.js**，編寫至少 5 題已確認 FAQ；不要加入顧客個資或敏感資料。
-3. 在 Windows PowerShell：
-```powershell
-npm install
-npx wrangler login
-Copy-Item .dev.vars.example .dev.vars
-npm run dev
+## 兩天在做什麼
+
+| | DAY 1 | DAY 2 |
+|---|---|---|
+| 上半場 | AI 是什麼、AI 協作三招、用 AI 整理我的 FAQ | 複習、欄位規格、訊息分流規則 |
+| 下半場 | LINE 關鍵字自動回覆 → Codex 部署 AI FAQ 機器人 | Codex 建立預約系統、D1、圖文選單、後台、換新鑰匙 |
+| 程式 | 本 repo（靜態 FAQ + Gemini，不用 D1、R2） | Codex 依整合提示詞重新建立 |
+| 成果 | 客人打字，AI 依 FAQ 回答 | 客人按選單預約，真人可以隨時接手 |
+
+完整排程見 [docs/01-course-plan.md](docs/01-course-plan.md)。
+
+## 文件
+
+| 文件 | 給誰 |
+|---|---|
+| [01 課程規劃](docs/01-course-plan.md) | 老師 |
+| [02 課前準備](docs/02-student-preflight.md) | 學員 |
+| [02a 課前 30 分鐘檢查表](docs/02a-preflight-check-teacher.md) | 老師 |
+| [03 LINE 設定與訊息分流](docs/03-line-setup.md) | 老師 |
+| [04 FAQ 為什麼用靜態檔](docs/04-faq-storage.md) | 老師 |
+| [05 第二天專題](docs/05-day2-project.md) | 老師 |
+| [06 講師／助教 SOP](docs/06-instructor-sop.md) | 老師、助教 |
+| [07 驗收表](docs/07-acceptance.md) | 老師、助教 |
+| [08 備用提示詞](docs/08-prompts.md) | 老師 |
+| [09 官方文件與限制](docs/09-resources.md) | 老師 |
+| [10 手動部署（備援）](docs/10-deployment-lab.md) | 老師 |
+| [11 紙本工作表](docs/11-worksheets.md) | 學員 |
+
+## DAY 1 範本的運作方式
+
 ```
-4. 本機 `.dev.vars` 填自己的秘密，無需 D1/R2。
-5. 遠端部署前設定：
-```powershell
-npx wrangler secret put LINE_CHANNEL_SECRET
-npx wrangler secret put LINE_CHANNEL_ACCESS_TOKEN
-npx wrangler secret put GEMINI_API_KEY
-npm run deploy
+客人傳訊息 → LINE → Worker 驗證簽章 → 整份 FAQ ＋ 客人的問題送 Gemini → 回覆 LINE
 ```
-6. LINE Webhook 指到 `https://<你的-worker>.workers.dev/webhook/line`，依 [LINE 教學](docs/03-line-setup.md) 啟用。實測同一問題三種問法、資料不足轉真人。
 
-## 第二天：只為預約建立 D1
+- `src/faq-data.js`：FAQ 內容。
+- `src/faq.js`：呼叫 Gemini，只能依 FAQ 回答，答不出來請客人傳「人工」。
+- `src/line.js`：簽章驗證、reply、push。
+- `src/index.js`：`/health`、`/webhook/line`。
+
+手動部署步驟見 [docs/10](docs/10-deployment-lab.md)。
+
+> `wrangler.day2.jsonc`、`src/bookings.js`、`src/admin*.js`、`migrations/`、`seeds/` 是早期「時段＋預約 S001」的第二天版本，課程已改用 vibe-coding-course-guide 的 Step 1–10，這些檔案保留作參考。
+
+## 鑰匙
+
+課程設計上，學員會把 LINE 與 Gemini 鑰匙填進網頁、交給 Codex，先做出成果再理解原理。提示詞要求 Codex 只把鑰匙放在 `.dev.vars`（已在 `.gitignore`）和 Cloudflare Worker secrets，第二天最後一步帶學員把鑰匙全部換新。
+
+正式給客人使用前，還需要補上身分驗證、存取控管、個資告知與資料保存政策。
+
+## 測試
+
 ```powershell
-npx wrangler d1 create line-course-bookings
-# 將顯示的 database_id 填入 wrangler.day2.jsonc
-npm run db:local
-npm run seed:local
-npm run dev:day2
+node --test tests/core.test.mjs
+python -I tests/db_test.py
 ```
-本機測試後：
-```powershell
-npm run db:remote
-npm run seed:remote
-npx wrangler secret put ADMIN_TOKEN
-# 可選：管理員通知使用 LINE_ADMIN_USER_ID
-npx wrangler secret put LINE_ADMIN_USER_ID
-npm run deploy:day2
-```
-`wrangler.day2.jsonc` 的 Worker name 與第一天相同；第二天啟用 `BOOKING_ENABLED=true` 並增加 D1 binding，FAQ 仍從 `src/faq-data.js` 讀取。管理後台：`/admin`；LINE 傳「時段」「預約 S001」。
-
-> 安全：不要把 LINE / Gemini 密鑰寫進 GitHub、前端或 AI 提示詞。正式使用前須加上身分驗證、存取控管、個資告知、保留政策、預約取消與通知重試機制。課程預約會儲存 LINE user ID；請只用測試帳號。Google API 可能有費率和額度；把所有 FAQ 每次送出，也代表每次都計入輸入 token。
-
-原第二天參考：[tmparz/vibe-coding-course-guide](https://github.com/tmparz/vibe-coding-course-guide)。此 repo 以教學時間重新拆分「Day 1 FAQ」與「Day 2 D1 預約」。
