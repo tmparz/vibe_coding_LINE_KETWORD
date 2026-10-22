@@ -8,7 +8,7 @@
 | 整理我的 FAQ | DAY 1「我的 FAQ」分頁（依學員填的服務資料組出） |
 | Codex 登入 Cloudflare | DAY 1「Cloudflare 與 Codex」分頁 |
 | 部署 FAQ 機器人 | DAY 1「部署 FAQ 機器人」分頁（帶入 FAQ 與三把鑰匙） |
-| 第二天整合提示詞 | DAY 2 Step 3（帶入欄位規格、第一天 FAQ、鑰匙、分流規則、真人接手、後台需求） |
+| 第二天整合提示詞 | DAY 2「Step 1 - 匯整系統提示詞」（帶入欄位規格、第一天 FAQ、鑰匙、分流規則、真人接手、後台需求） |
 
 這裡只放網頁上沒有的備用提示詞。
 
@@ -34,8 +34,9 @@
 
 ```
 我重新發行了 LINE Access Token，也建立了新的 Gemini API Key。
-請用 wrangler secret put 更新 LINE_CHANNEL_ACCESS_TOKEN 和 GEMINI_API_KEY，
-不要把新的鑰匙寫進任何檔案。更新完幫我確認 /health 正常。
+請先看今天這個 Worker 的設定，找出存 LINE Access Token 和 Gemini 金鑰的 secret 名稱，
+再用 wrangler secret put 更新，不要把新的鑰匙寫進任何檔案。
+更新完告訴我改了哪兩個 secret，我再用手機問一題 FAQ、按一次預約確認。
 新的 Access Token：〔貼上〕
 新的 Gemini API Key：〔貼上〕
 ```
