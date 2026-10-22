@@ -8,13 +8,31 @@
 
 ## DAY 1 下半場
 
-1. **為什麼要接 AI**：用一句話帶過 LINE 後台內建的關鍵字回覆只認得固定的字，客人換個說法就聽不懂；我們要讓 Gemini 依 FAQ 理解意思。不帶學員設定內建關鍵字。
+1. **先用內建關鍵字**：設定歡迎訊息、一則關鍵字自動回覆（例如「營業時間」）。手機傳「營業時間」收到回覆，再傳「你們幾點開門？」，讓學員看到關鍵字聽不懂換句話說。
+1-1. **再試內建 AI 聊天機器人（β）**：自動回應 → AI 聊天機器人（β）→ 啟用並同意條款 → 從 FAQ 挑 3 題建立問答 → 「常見問答回應測試」輸入「你們幾點開門？」。**只測試，不要到「回應設定」切換回應方式**，正式啟用要加購聊天進階方案。重點見下方〈內建 AI 聊天機器人（β）〉。
 2. **開通 Messaging API**：OA Manager → 設定 → Messaging API → 啟用。再到 <https://developers.line.biz/> 取得 Channel ID、Channel Secret、Your user ID，並在 Messaging API 分頁發行 Access Token。學員把它們填進頁面欄位，第二天會自動帶入。
 3. **資料流**：客人文字 → LINE → Worker 驗證簽章 → 整份 FAQ 加上客人的問題送 Gemini → LINE 回覆。Worker 的程式由 Codex 依部署提示詞從零寫出，學員不下載任何程式碼。
 4. **Webhook**：LINE Developers → Messaging API → Webhook URL 填 `https://<你的-worker>.workers.dev/webhook/line` → Verify → 開啟 Use webhook。
-5. **關閉 OA 的自動回應訊息**，否則客人問一題，LINE 預設的自動回應和 AI 會各回一次。
-6. 驗收：換個說法問 FAQ（例如 FAQ 寫「營業時間」，問「你們幾點開門？」），AI 答得出來；問 FAQ 沒有的事，AI 請客人傳「人工」。
+5. **關閉 OA 的自動回應訊息**，否則客人問一題，剛剛設定的關鍵字和自己的 AI 會各回一次。
+6. 驗收「同一題比三次」：「你們幾點開門？」關鍵字聽不懂、內建 AI 在測試區挑一題回答、自己的 AI 機器人在手機上答得出來；問 FAQ 沒有的事，AI 請客人傳「人工」。
 7. 老師示範：傳「人工」之後再傳訊息，機器人還是會回答，真人和機器人同時回覆。這是第二天要解決的問題。
+
+## 內建 AI 聊天機器人（β）
+
+查證日期：2026-10-22，來源見文末。
+
+| 項目 | 內容 |
+|---|---|
+| 怎麼回答 | 從店家建立的常見問答裡，挑最適合的一題回覆；能處理一部分換句話說 |
+| 建立問答 | 手動（問題 200 字、回答 500 字）、下載範本批次上傳，或上傳最多 10 個 PDF／JPEG／PNG 由 AI 自動產生；最多 100 筆 |
+| 費用 | 建立與測試免費；正式回覆客人要加購「聊天進階方案」，官方專欄寫訂閱制 NT$100 |
+| 限制 | 測試版，每月有回覆上限（官方未公布數字）；建議好友數低於 25,000；醫療／社福、金融、宗教、政治／行政、法律等業種可能被拒絕提供 |
+| 和關鍵字並用 | 客人輸入和關鍵字**完全一致**時，優先用關鍵字回應，不由 AI 回覆 |
+| 營業時間 | 可以設定只在非營業時間由 AI 回覆 |
+| 資料 | 官方說明對話與上傳資料不會用於 AI 學習 |
+| 和 Webhook 並用 | 官方文件沒有說明。課堂上不啟用，避免和學員自己的機器人搶著回覆 |
+
+**課堂上要讓學員知道的差異**：只回答固定問題的店家，內建的就夠用；我們自己做，是因為第二天要接預約、記住真人接手中的客人、記錄答不出來的問題，這些內建功能做不到。
 
 ## DAY 2：訊息分流
 
@@ -43,5 +61,8 @@
 | 按預約沒反應 | 按鈕送出的文字是否和「👉 我要預約【」完全相同（全形括號、空格） |
 
 官方文件：
+- AI 聊天機器人（β）說明：<https://help2.line.me/official_account_tw/web/categoryId/200000670/3/pc?lang=zh-Hant>
+- AI 聊天機器人（β）介紹與費用：<https://tw.linebiz.com/column/oa-aichatbot/>
+- 建立問答：<https://tw.linebiz.com/manual/line-official-account/ai-chatbot-faq-creation/>
 - <https://developers.line.biz/en/docs/messaging-api/getting-started/>
 - <https://developers.line.biz/en/docs/messaging-api/verify-webhook-signature/>
