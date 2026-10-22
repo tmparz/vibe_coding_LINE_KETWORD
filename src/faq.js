@@ -30,7 +30,7 @@ export async function answerFaq(question, env) {
   // 明確報錯而非默默遺漏部分 FAQ；超量時應重新評估檢索架構和成本。
   if (material.length > 120000) return "FAQ 資料量超過教學範例上限，請傳「人工」聯繫客服。";
 
-  const model = env.GEMINI_MODEL || "gemini-3.5-flash-lite";
+  const model = env.GEMINI_MODEL || "gemini-3.6-flash";
   const url = "https://generativelanguage.googleapis.com/v1beta/models/" +
     encodeURIComponent(model) + ":generateContent";
   const payload = {

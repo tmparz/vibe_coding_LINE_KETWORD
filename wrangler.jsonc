@@ -4,7 +4,7 @@
   "main": "src/index.js",
   "compatibility_date": "2026-10-01",
   "observability": { "enabled": true },
-  "vars": { "GEMINI_MODEL": "gemini-3.5-flash-lite", "BOOKING_ENABLED": "false" }
+  "vars": { "GEMINI_MODEL": "gemini-3.6-flash", "BOOKING_ENABLED": "false" }
   // DAY 1 不需要 D1，也不需要 R2 或信用卡。
   // 如果選修 R2，再自行加入 r2_buckets binding 和 FAQ_SOURCE=r2。
 }
