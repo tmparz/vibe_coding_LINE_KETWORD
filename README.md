@@ -1,8 +1,8 @@
-# 女力 LINE OA × AI 工作流進階班｜DAY 1 FAQ 機器人範本與老師文件
+# 女力 LINE OA × AI 工作流進階班｜老師文件與參考程式
 
 這個 repo 有兩個用途：
 
-1. **DAY 1 的 Worker 範本**：學員在課堂上請 Codex clone 這個 repo，把自己的 FAQ 寫進 `src/faq-data.js`，部署成 LINE AI 客服。
+1. **DAY 1 的參考程式**：第一天 FAQ 機器人的一種做法。**學員不下載這份程式**，課堂上是把所有資料寫在一段提示詞裡交給 Codex，由它從零建立。這份程式給老師對照，或 Codex 卡住時備援（見 [docs/10](docs/10-deployment-lab.md)）。
 2. **老師文件**：課程規劃、課前檢查、排錯、驗收都在 `docs/`。
 
 學員網頁（另一個 repo [vibe-coding-course-guide](https://github.com/tmparz/vibe-coding-course-guide)，Pages 從 `two-day-v2` 分支發布）：
@@ -15,8 +15,8 @@
 | | DAY 1 | DAY 2 |
 |---|---|---|
 | 上半場 | AI 是什麼、AI 協作三招、用 AI 整理我的 FAQ | 複習、欄位規格、訊息分流規則 |
-| 下半場 | LINE 關鍵字自動回覆 → Codex 部署 AI FAQ 機器人 | Codex 建立預約系統、D1、圖文選單、後台、換新鑰匙 |
-| 程式 | 本 repo（靜態 FAQ + Gemini，不用 D1、R2） | Codex 依整合提示詞重新建立 |
+| 下半場 | 開通 Messaging API → 把 FAQ 和鑰匙交給 Codex，從零做出 AI 自動回答 | Codex 建立預約系統、D1、圖文選單、後台、換新鑰匙 |
+| 程式 | Codex 依部署提示詞從零建立（FAQ + Gemini，不用 D1、R2） | Codex 依整合提示詞從零建立 |
 | 成果 | 客人打字，AI 依 FAQ 回答 | 客人按選單預約，真人可以隨時接手 |
 
 完整排程見 [docs/01-course-plan.md](docs/01-course-plan.md)。
@@ -38,7 +38,7 @@
 | [10 手動部署（備援）](docs/10-deployment-lab.md) | 老師 |
 | [11 紙本工作表](docs/11-worksheets.md) | 學員 |
 
-## DAY 1 範本的運作方式
+## DAY 1 參考程式的運作方式
 
 ```
 客人傳訊息 → LINE → Worker 驗證簽章 → 整份 FAQ ＋ 客人的問題送 Gemini → 回覆 LINE

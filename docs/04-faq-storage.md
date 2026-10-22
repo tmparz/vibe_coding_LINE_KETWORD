@@ -1,7 +1,7 @@
 # FAQ：本課採「一次給 Gemini 完整 FAQ」的最簡方案
 
 ## Day 1 必修：靜態 FAQ
-學員在第一天頁面用 AI 整理好 FAQ，由 Codex 依部署提示詞寫進 src/faq-data.js。例如：
+學員在第一天頁面用 AI 整理好 FAQ，由 Codex 依部署提示詞寫成機器人裡的一個獨立 FAQ 檔案。以參考程式的 src/faq-data.js 為例：
 ~~~js
 export const faqData = [
   { question: "星期日有營業嗎？", answer: "星期日公休。" },

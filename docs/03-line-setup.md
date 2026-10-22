@@ -8,12 +8,12 @@
 
 ## DAY 1 下半場
 
-1. **先做沒有 AI 的機器人**：設定歡迎訊息、一則關鍵字自動回覆（例如「營業時間」）。手機傳「營業時間」收到回覆，再傳「你們幾點開門？」，讓學員看到關鍵字聽不懂換句話說。
+1. **為什麼要接 AI**：用一句話帶過 LINE 後台內建的關鍵字回覆只認得固定的字，客人換個說法就聽不懂；我們要讓 Gemini 依 FAQ 理解意思。不帶學員設定內建關鍵字。
 2. **開通 Messaging API**：OA Manager → 設定 → Messaging API → 啟用。再到 <https://developers.line.biz/> 取得 Channel ID、Channel Secret、Your user ID，並在 Messaging API 分頁發行 Access Token。學員把它們填進頁面欄位，第二天會自動帶入。
-3. **資料流**：客人文字 → LINE → Worker 驗證簽章 → 整份 FAQ 加上客人的問題送 Gemini → LINE 回覆。
+3. **資料流**：客人文字 → LINE → Worker 驗證簽章 → 整份 FAQ 加上客人的問題送 Gemini → LINE 回覆。Worker 的程式由 Codex 依部署提示詞從零寫出，學員不下載任何程式碼。
 4. **Webhook**：LINE Developers → Messaging API → Webhook URL 填 `https://<你的-worker>.workers.dev/webhook/line` → Verify → 開啟 Use webhook。
-5. **關閉 OA 的自動回應訊息**，否則客人問一題，關鍵字和 AI 會各回一次。
-6. 驗收：同一題「你們幾點開門？」再問一次，這次 AI 聽得懂；問 FAQ 沒有的事，AI 請客人傳「人工」。
+5. **關閉 OA 的自動回應訊息**，否則客人問一題，LINE 預設的自動回應和 AI 會各回一次。
+6. 驗收：換個說法問 FAQ（例如 FAQ 寫「營業時間」，問「你們幾點開門？」），AI 答得出來；問 FAQ 沒有的事，AI 請客人傳「人工」。
 7. 老師示範：傳「人工」之後再傳訊息，機器人還是會回答，真人和機器人同時回覆。這是第二天要解決的問題。
 
 ## DAY 2：訊息分流
